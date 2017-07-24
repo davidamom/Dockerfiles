@@ -60,4 +60,5 @@ EXPOSE 80
 EXPOSE 443
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+CMD ["/bin/bash"]
 #ENTRYPOINT /usr/sbin/apachectl -D FOREGROUND
