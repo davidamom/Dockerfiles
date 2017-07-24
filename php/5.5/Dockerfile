@@ -61,4 +61,4 @@ EXPOSE 443
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 #CMD ["/bin/bash"]
-ENTRYPOINT /bin/bash
+# ENTRYPOINT /bin/bash
