@@ -60,4 +60,5 @@ COPY 000-default.conf /etc/apache2/sites-available/default
 EXPOSE 80 443
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
-#ENTRYPOINT /usr/sbin/apachectl -D FOREGROUND
+#CMD ["/bin/bash"]
+# ENTRYPOINT /bin/bash
