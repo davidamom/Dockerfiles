@@ -1,4 +1,6 @@
 FROM ubuntu:14.04
+MAINTAINER David Amom <davidamom@gmail.com>
+
 RUN apt-get update && apt-get install -y \
     # Apache 2.4.7
     apache2 \
@@ -55,9 +57,7 @@ ADD . /var/www/html/
 # Copies virtualhost conf file into the container directory.
 COPY 000-default.conf /etc/apache2/sites-available/default
 
-EXPOSE 80
-    #SSL
-EXPOSE 443
+EXPOSE 80 443
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 #ENTRYPOINT /usr/sbin/apachectl -D FOREGROUND
