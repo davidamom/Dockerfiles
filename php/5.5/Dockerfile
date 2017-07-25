@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y \
         php-soap \
     # Optional
     #dialog apt-utils \
-    #nano \
+    nano \
     # Cleaning...
     && apt-get clean && apt-get autoclean && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/*
@@ -43,6 +43,7 @@ ENV APACHE_PID_FILE  /var/run/apache2.pid
 RUN a2enmod rewrite
 RUN /usr/sbin/a2ensite default-ssl
 RUN /usr/sbin/a2enmod ssl
+# https://httpd.apache.org/docs/2.4/mod/prefork.html
 RUN /usr/sbin/a2dismod 'mpm_*' && /usr/sbin/a2enmod mpm_prefork
 LABEL Description=" Apache 2.4.7 Webserver - PHP 5.5.9"
 
@@ -55,7 +56,7 @@ VOLUME /var/www/html
 ##     must be inside the app root folder before running docker build image command.
 ADD . /var/www/html/
 # Copies virtualhost conf file into the container directory.
-COPY 000-default.conf /etc/apache2/sites-available/default
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 EXPOSE 80 443
 
