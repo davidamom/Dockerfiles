@@ -45,6 +45,8 @@ RUN /usr/sbin/a2ensite default-ssl
 RUN /usr/sbin/a2enmod ssl
 # https://httpd.apache.org/docs/2.4/mod/prefork.html
 RUN /usr/sbin/a2dismod 'mpm_*' && /usr/sbin/a2enmod mpm_prefork
+# Setting permissions so that apcu can create cache directories
+RUN chmod -R 775 /var/www/html
 LABEL Description=" Apache 2.4.7 Webserver - PHP 5.5.9"
 
 VOLUME /var/www/html
